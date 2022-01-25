@@ -1,0 +1,113 @@
+.home {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("../images/home/background-home-desktop.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+  .home-section {
+    color: $blueColor;
+    margin-top: 330px;
+    margin-bottom: 131px;
+
+    .container {
+      column-gap: 386px;
+
+      .home-section__info {
+        width: 450px;
+        height: 382px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h2 {
+          font-family: "Barlow Condensed", sans-serif;
+          font-weight: 400;
+          font-size: 28px;
+          letter-spacing: 4.725px;
+          text-transform: uppercase;
+          margin-bottom: 2px;
+        }
+
+        h1 {
+          color: $whiteColor;
+          font-family: "Bellefair", serif;
+          font-weight: normal;
+          text-transform: uppercase;
+          font-size: 150px;
+          line-height: 172px;
+          margin-bottom: 24px;
+        }
+
+        p {
+          font-family: "Barlow", sans-serif;
+          line-height: 32px;
+          font-size: 18px;
+        }
+      }
+
+      .home-section__explore {
+        align-self: flex-end;
+        a {
+          font-family: "Bellefair", serif;
+          font-size: 32px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          width: 274px;
+          height: 274px;
+          background-color: $whiteColor;
+          border-radius: 50%;
+          color: $exploreColor;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          border: 1px solid $exploreColor;
+
+          &:hover {
+            animation: buttonAnimation 1s infinite ease-in-out alternate;
+          }
+        }
+
+        @keyframes buttonAnimation {
+          0% {
+            outline: 0px solid rgb(0, 0, 0);
+          }
+          10% {
+            outline: 10px solid rgb(0, 0, 0);
+          }
+          20% {
+            outline: 20px solid rgb(0, 0, 0);
+          }
+          30% {
+            outline: 30px solid rgb(0, 0, 0);
+          }
+          40% {
+            outline: 40px solid rgb(0, 0, 0);
+          }
+          50% {
+            outline: 50px solid rgb(0, 0, 0);
+          }
+          60% {
+            outline: 60px solid rgb(0, 0, 0);
+          }
+          70% {
+            outline: 70px solid rgb(0, 0, 0);
+          }
+          80% {
+            outline: 75px solid rgb(0, 0, 0);
+          }
+          90% {
+            outline: 80px solid rgb(0, 0, 0);
+          }
+          100% {
+            outline: 88px solid rgb(0, 0, 0);
+          }
+        }
+      }
+    }
+  }
+}

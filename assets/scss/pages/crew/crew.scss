@@ -1,0 +1,124 @@
+.crew {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("../images/crew/background-crew-desktop.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+  .crew-info {
+    .container {
+      column-gap: 20px;
+      .crew-info__brief {
+        display: flex;
+        flex-direction: column;
+        row-gap: 157px;
+        align-self: flex-start;
+        h3 {
+          font-family: "Barlow Condensed", sans-serif;
+          color: $whiteColor;
+          text-transform: uppercase;
+          font-weight: 400;
+          font-size: 28px;
+          letter-spacing: 4.725px;
+          position: relative;
+
+          span {
+            opacity: 0.25;
+            font-weight: 700;
+            margin-right: 24px;
+          }
+        }
+
+        .desc-carousel {
+          display: flex;
+          flex-direction: column;
+          max-width: 615px;
+          overflow: hidden;
+          .desc-container {
+            display: flex;
+            transform: translateX(0);
+            transition: all 0.3s ease-in-out;
+            .description {
+              min-width: 100%;
+              margin-bottom: 120px;
+              h2 {
+                font-family: "Bellefair", serif;
+                font-size: 32px;
+                color: $whiteColor;
+                opacity: 0.5;
+                text-transform: uppercase;
+                font-weight: 400;
+                line-height: 37px;
+                margin-bottom: 15px;
+              }
+
+              h1 {
+                font-family: "Bellefair", serif;
+                font-size: 56px;
+                color: $whiteColor;
+                font-weight: 400;
+                text-transform: uppercase;
+                line-height: 64px;
+                margin-bottom: 27px;
+              }
+
+              p {
+                font-size: 18px;
+                color: $blueColor;
+                font-family: "Barlow", sans-serif;
+                font-weight: 400;
+                max-width: 444px;
+                line-height: 32px;
+              }
+            }
+          }
+
+          ul {
+            display: flex;
+            margin-top: -34px;
+            position: relative;
+
+            li {
+              width: 15px;
+              height: 15px;
+              border-radius: 50%;
+              background-color: $whiteColor;
+              opacity: 0.17;
+              margin-right: 24px;
+              cursor: pointer;
+              transition: opacity 0.3s ease-in-out;
+              &:last-of-type {
+                margin-right: 0;
+              }
+
+              &.active,
+              &:hover.active {
+                opacity: 1;
+              }
+
+              &:hover {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+
+      .crew-info__image {
+        background-image: url("../images/crew/image-douglas-hurley.webp");
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100%;
+        padding-bottom: 52%;
+        transition: background-image 0.3s ease-in-out;
+
+        .image {
+          display: none;
+        }
+      }
+    }
+  }
+}
