@@ -16,6 +16,7 @@
         flex-direction: column;
         row-gap: 97px;
         overflow: hidden;
+        padding-top: 78px;
         h3 {
           grid-area: header;
           font-family: "Barlow Condensed", sans-serif;
@@ -58,8 +59,8 @@
         flex-direction: column;
         row-gap: 52px;
         max-width: 445px;
-        margin-top: 67px;
         overflow: hidden;
+        align-self: flex-end;
 
         ul {
           display: flex;
@@ -76,6 +77,10 @@
             padding-bottom: 12px;
             border-bottom: 3px solid transparent;
             transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+            &:last-of-type {
+              margin-right: 0;
+            }
 
             &.active,
             &:hover.active {
@@ -155,6 +160,150 @@
                     font-family: "Bellefair", serif;
                     font-size: 28px;
                     text-transform: uppercase;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .destination {
+    .destination-info {
+      .container {
+        padding: 0 100px 118px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .destination {
+    .destination-info {
+      .container {
+        padding: 0 24px 118px;
+        .destination-info__image {
+          h3 {
+            margin-left: 31px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .destination {
+    background-image: url("../images/destination/background-destination-tablet.jpg");
+    .destination-info {
+      .container {
+        padding-left: 38.5px;
+        flex-direction: column;
+
+        .destination-info__image {
+          width: 100%;
+          padding-top: 78px;
+          margin-bottom: 53px;
+
+          h3 {
+            font-size: 20px;
+          }
+
+          .carousel {
+            margin: 0;
+            align-self: center;
+            width: 300px;
+            height: 300px;
+          }
+        }
+
+        .destination-info__brief {
+          max-width: 573px;
+          align-self: center;
+          ul {
+            align-self: center;
+          }
+          .desc-carousel {
+            .desc-container {
+              .description {
+                min-width: 100%;
+                text-align: center;
+
+                h1 {
+                  font-size: 80px;
+                }
+
+                .brief__description {
+                  font-size: 16px;
+                }
+
+                .brief__travel {
+                  justify-content: space-evenly;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .destination {
+    background-image: url("../images/destination/background-destination-mobile.jpg");
+
+    .destination-info {
+      .container {
+        padding: 0 24px 58px;
+
+        .destination-info__image {
+          padding-top: 37px;
+          row-gap: 32px;
+          h3 {
+            font-size: 16px;
+            align-self: center;
+            letter-spacing: 2.7px;
+          }
+
+          .carousel {
+            width: 170px;
+            height: 170px;
+          }
+        }
+
+        .destination-info__brief {
+          width: 327px;
+          row-gap: 20px;
+          ul {
+            li {
+              font-size: 14px;
+            }
+          }
+
+          .desc-carousel {
+            .desc-container {
+              .description {
+                h1 {
+                  font-size: 56px;
+                }
+
+                .brief__description {
+                  font-size: 15px;
+                  line-height: 25px;
+                  margin-bottom: 32px;
+                }
+
+                .brief__travel {
+                  flex-direction: column;
+                  row-gap: 32px;
+
+                  .travel__distance {
+                    margin-right: 0;
                   }
                 }
               }

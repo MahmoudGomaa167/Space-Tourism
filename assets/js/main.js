@@ -1,6 +1,9 @@
+let homePage = document.getElementById('home');
 let destPage = document.getElementById('destination');
 let crewPage = document.getElementById('crew');
 let technologyPage = document.getElementById('technology');
+let menuIcon = document.querySelector('.menu');
+let navbarList = document.querySelector('.navbar__list');
 
 
 const removeClass = (array) => {
@@ -11,8 +14,25 @@ const addClass = (array, index) => {
     array[index].classList.add('active');
 }
 
+const menuFunction = () => {
+
+    menuIcon.addEventListener('click', () => {
+        menuIcon.classList.toggle('open');
+        navbarList.classList.toggle('open');
+    })
+}
+
+if (homePage) {
+    document.addEventListener('DOMContentLoaded', () => {
+        menuFunction();
+    })
+}
+
 if (destPage) {
     document.addEventListener('DOMContentLoaded', function () {
+
+        menuFunction();
+
         const imageContainer = document.querySelector('.image-container');
         const listItems = document.querySelectorAll('.list-item');
         const descContainer = document.querySelector('.desc-container');
@@ -35,6 +55,9 @@ if (destPage) {
 }
 
 if (crewPage) {
+
+    menuFunction();
+
     document.addEventListener('DOMContentLoaded', function () {
         let descriptions = document.querySelectorAll('.description');
         let descriptionContainer = document.querySelector('.desc-container');
@@ -88,7 +111,8 @@ if (crewPage) {
                 index = images.length - 1;
             }
 
-            imageContainer.style.backgroundImage = `url(${images[index].getAttribute('src')})`;
+            removeClass(images);
+            addClass(images, index)
         }
 
 
@@ -109,7 +133,8 @@ if (crewPage) {
                 removeClass(dotListItems);
                 addClass(dotListItems, index);
                 descriptionContainer.style.transform = `translateX(${-index * descriptionContainerWidth}px)`;
-                imageContainer.style.backgroundImage = `url(${images[index].getAttribute('src')})`
+                removeClass(images);
+                addClass(images, index)
                 reset()
             })
         });
@@ -118,14 +143,17 @@ if (crewPage) {
 }
 
 if (technologyPage) {
+
+    menuFunction();
+
     document.addEventListener('DOMContentLoaded', function () {
         let listItems = document.querySelectorAll('.list-item');
         let itemContainer = document.querySelector('.item-container');
         let itemContainerHeight = itemContainer.offsetHeight;
-        let imageContainer = document.querySelector('.image-container');
-        let imageContainerHeight = imageContainer.offsetHeight;
-
-
+        let imageContainer = document.querySelector('.technology-info__image');
+        let portraitImages = document.querySelectorAll('.p-image');
+        let landscapeImages = document.querySelectorAll('.l-image');
+        let mq = window.matchMedia('(max-width: 768px)');
 
 
         listItems.forEach((item, index) => {
@@ -134,10 +162,28 @@ if (technologyPage) {
                 removeClass(listItems);
                 addClass(listItems, index);
 
+                window.addEventListener('resize', () => {
+                    if (mq.matches) {
+                        imageContainer.style.backgroundImage = `url(${landscapeImages[index].getAttribute('src')})`;
+                    } else {
+                        imageContainer.style.backgroundImage = `url(${portraitImages[index].getAttribute('src')})`;
+                    }
+                })
+
+                if (mq.matches) {
+                    imageContainer.style.backgroundImage = `url(${landscapeImages[index].getAttribute('src')})`;
+                } else {
+                    imageContainer.style.backgroundImage = `url(${portraitImages[index].getAttribute('src')})`;
+                }
+
                 itemContainer.style.transform = `translateY(${-index * itemContainerHeight}px)`;
-                imageContainer.style.transform = `translateY(${-index * imageContainerHeight}px)`;
+
             })
         })
+
+
     })
+
+
 }
 

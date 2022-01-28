@@ -4,7 +4,8 @@
   box-sizing: border-box; }
 
 body {
-  font-family: "Barlow", sans-serif; }
+  font-family: "Barlow", sans-serif;
+  position: relative; }
 
 ul {
   padding: 0;
@@ -17,42 +18,43 @@ a {
 .container {
   width: 100%;
   padding: 0 165px;
-  margin-top: 212px;
   display: flex;
   align-items: center;
-  column-gap: 150px;
+  justify-content: space-between;
   position: relative; }
 
 .navbar {
   position: relative;
   top: 40px;
-  left: 55px;
-  right: 0; }
+  left: 0;
+  right: 0;
+  height: 96px; }
   .navbar nav {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    height: 100%;
+    justify-content: space-between; }
     .navbar nav .navbar__logo {
       width: 48px;
       height: 48px;
       object-fit: contain;
-      margin-right: 64px; }
+      display: flex;
+      margin: 0 65px 0 55px; }
     .navbar nav .navbar__decor {
-      position: absolute;
-      left: 114px;
-      min-width: 473px;
+      width: calc(45vw - 167px);
       height: 1px;
       background-color: #fff;
       opacity: 0.25;
-      z-index: 3; }
-    .navbar nav .navbar__list {
       position: absolute;
-      right: 55px;
-      left: 557px;
-      min-width: 830px;
-      height: 96px;
+      left: 167px;
+      z-index: 2; }
+    .navbar nav .navbar__list {
+      height: 100%;
+      flex-basis: 57.5vw;
       display: flex;
       align-items: center;
       justify-content: center;
+      transform: translateX(0);
       background-color: rgba(255, 255, 255, 0.04);
       backdrop-filter: blur(81.5485px); }
       .navbar nav .navbar__list ul {
@@ -86,7 +88,80 @@ a {
               border-color: #fff; }
             .navbar nav .navbar__list ul li a:hover {
               border-color: rgba(255, 255, 255, 0.5); }
+    .navbar nav .menu {
+      display: none; }
 
+@media screen and (max-width: 768px) {
+  .navbar {
+    top: 0; }
+    .navbar nav .navbar__logo {
+      margin-left: 39px; }
+    .navbar nav .navbar__decor {
+      display: none; }
+    .navbar nav .navbar__list ul li {
+      margin-right: 37px; }
+      .navbar nav .navbar__list ul li a {
+        font-size: 14px; }
+        .navbar nav .navbar__list ul li a span {
+          display: none; } }
+@media screen and (max-width: 500px) {
+  .navbar nav .navbar__list {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 254px;
+    z-index: 3;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out; }
+    .navbar nav .navbar__list ul {
+      flex-direction: column;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+      row-gap: 32px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin: 0 0 0 32px;
+      padding-top: 118px; }
+      .navbar nav .navbar__list ul li {
+        height: auto;
+        text-align: left; }
+        .navbar nav .navbar__list ul li a {
+          border: none; }
+          .navbar nav .navbar__list ul li a span {
+            display: block; }
+    .navbar nav .navbar__list.open {
+      transform: translateX(0); }
+  .navbar nav .menu {
+    margin-left: auto;
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 32px;
+    right: 24px;
+    z-index: 100;
+    transform-origin: center;
+    transition: all 0.3s ease-in-out; }
+    .navbar nav .menu span {
+      width: 100%;
+      height: 3px;
+      background-color: #d0d6f9;
+      margin-bottom: 6px;
+      transition: all 0.3s ease-in-out; }
+      .navbar nav .menu span:last-of-type {
+        margin-bottom: 0; }
+    .navbar nav .menu.open span:first-of-type {
+      transform: translateY(8px) rotate(-45deg); }
+    .navbar nav .menu.open span:nth-of-type(2) {
+      transform: translateX(100%);
+      opacity: 0;
+      visibility: hidden; }
+    .navbar nav .menu.open span:last-of-type {
+      transform: translateY(-10px) rotate(45deg); } }
 .home {
   position: relative;
   min-height: 100vh;
@@ -99,53 +174,53 @@ a {
     color: #d0d6f9;
     margin-top: 330px;
     margin-bottom: 131px; }
-    .home .home-section .container {
-      column-gap: 386px; }
-      .home .home-section .container .home-section__info {
-        width: 450px;
-        height: 382px;
+    .home .home-section .container .home-section__info {
+      width: 450px;
+      height: 382px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
+      .home .home-section .container .home-section__info h2 {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 400;
+        font-size: 28px;
+        letter-spacing: 4.725px;
+        text-transform: uppercase;
+        margin-bottom: 2px; }
+      .home .home-section .container .home-section__info h1 {
+        color: #fff;
+        font-family: "Bellefair", serif;
+        font-weight: normal;
+        text-transform: uppercase;
+        font-size: 150px;
+        line-height: 172px;
+        margin-bottom: 24px; }
+      .home .home-section .container .home-section__info p {
+        font-family: "Barlow", sans-serif;
+        line-height: 32px;
+        font-size: 18px; }
+    .home .home-section .container .home-section__explore {
+      align-self: flex-end;
+      display: flex;
+      justify-content: center; }
+      .home .home-section .container .home-section__explore a {
+        font-family: "Bellefair", serif;
+        font-size: 32px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        width: 274px;
+        height: 274px;
+        background-color: #fff;
+        border-radius: 50%;
+        color: #0b0d17;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between; }
-        .home .home-section .container .home-section__info h2 {
-          font-family: "Barlow Condensed", sans-serif;
-          font-weight: 400;
-          font-size: 28px;
-          letter-spacing: 4.725px;
-          text-transform: uppercase;
-          margin-bottom: 2px; }
-        .home .home-section .container .home-section__info h1 {
-          color: #fff;
-          font-family: "Bellefair", serif;
-          font-weight: normal;
-          text-transform: uppercase;
-          font-size: 150px;
-          line-height: 172px;
-          margin-bottom: 24px; }
-        .home .home-section .container .home-section__info p {
-          font-family: "Barlow", sans-serif;
-          line-height: 32px;
-          font-size: 18px; }
-      .home .home-section .container .home-section__explore {
-        align-self: flex-end; }
-        .home .home-section .container .home-section__explore a {
-          font-family: "Bellefair", serif;
-          font-size: 32px;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          width: 274px;
-          height: 274px;
-          background-color: #fff;
-          border-radius: 50%;
-          color: #0b0d17;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.3s ease-in-out;
-          border: 1px solid #0b0d17; }
-          .home .home-section .container .home-section__explore a:hover {
-            animation: buttonAnimation 1s infinite ease-in-out alternate; }
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        border: 1px solid #0b0d17; }
+        .home .home-section .container .home-section__explore a:hover {
+          animation: buttonAnimation 1s infinite ease-in-out alternate; }
 @keyframes buttonAnimation {
   0% {
     outline: 0px solid black; }
@@ -169,6 +244,45 @@ a {
     outline: 80px solid black; }
   100% {
     outline: 88px solid black; } }
+@media screen and (max-width: 1024px) {
+  .home .home-section .container {
+    padding-right: 45px; } }
+@media screen and (max-width: 768px) {
+  .home {
+    background-image: url("../images/home/background-home-tablet.jpg"); }
+    .home .home-section {
+      margin-top: 202px; }
+      .home .home-section .container {
+        padding-right: 165px;
+        flex-direction: column;
+        row-gap: 156px; }
+        .home .home-section .container .home-section__info {
+          text-align: center; }
+        .home .home-section .container .home-section__explore {
+          align-self: center; } }
+@media screen and (max-width: 500px) {
+  .home {
+    background-image: url("../images/home/background-home-mobile.jpg"); }
+    .home .home-section {
+      margin-top: 112px; }
+      .home .home-section .container {
+        padding: 0 24px;
+        flex-direction: column;
+        row-gap: 156px; }
+        .home .home-section .container .home-section__info {
+          text-align: center;
+          max-width: 327px;
+          max-height: 276px; }
+          .home .home-section .container .home-section__info h2 {
+            font-size: 16px; }
+          .home .home-section .container .home-section__info h1 {
+            font-size: 80px;
+            line-height: 100px;
+            margin-bottom: 16px; }
+          .home .home-section .container .home-section__info p {
+            font-size: 15px; }
+        .home .home-section .container .home-section__explore {
+          align-self: center; } }
 .destination {
   position: relative;
   min-height: 100vh;
@@ -183,7 +297,8 @@ a {
       display: flex;
       flex-direction: column;
       row-gap: 97px;
-      overflow: hidden; }
+      overflow: hidden;
+      padding-top: 78px; }
       .destination .destination-info .container .destination-info__image h3 {
         grid-area: header;
         font-family: "Barlow Condensed", sans-serif;
@@ -215,8 +330,8 @@ a {
       flex-direction: column;
       row-gap: 52px;
       max-width: 445px;
-      margin-top: 67px;
-      overflow: hidden; }
+      overflow: hidden;
+      align-self: flex-end; }
       .destination .destination-info .container .destination-info__brief ul {
         display: flex; }
         .destination .destination-info .container .destination-info__brief ul li {
@@ -232,6 +347,8 @@ a {
           padding-bottom: 12px;
           border-bottom: 3px solid transparent;
           transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out; }
+          .destination .destination-info .container .destination-info__brief ul li:last-of-type {
+            margin-right: 0; }
           .destination .destination-info .container .destination-info__brief ul li.active, .destination .destination-info .container .destination-info__brief ul li:hover.active {
             border-color: #fff;
             color: #fff; }
@@ -293,6 +410,76 @@ a {
                 font-size: 28px;
                 text-transform: uppercase; }
 
+@media screen and (max-width: 1200px) {
+  .destination .destination-info .container {
+    padding: 0 100px 118px; } }
+@media screen and (max-width: 1024px) {
+  .destination .destination-info .container {
+    padding: 0 24px 118px; }
+    .destination .destination-info .container .destination-info__image h3 {
+      margin-left: 31px; } }
+@media screen and (max-width: 768px) {
+  .destination {
+    background-image: url("../images/destination/background-destination-tablet.jpg"); }
+    .destination .destination-info .container {
+      padding-left: 38.5px;
+      flex-direction: column; }
+      .destination .destination-info .container .destination-info__image {
+        width: 100%;
+        padding-top: 78px;
+        margin-bottom: 53px; }
+        .destination .destination-info .container .destination-info__image h3 {
+          font-size: 20px; }
+        .destination .destination-info .container .destination-info__image .carousel {
+          margin: 0;
+          align-self: center;
+          width: 300px;
+          height: 300px; }
+      .destination .destination-info .container .destination-info__brief {
+        max-width: 573px;
+        align-self: center; }
+        .destination .destination-info .container .destination-info__brief ul {
+          align-self: center; }
+        .destination .destination-info .container .destination-info__brief .desc-carousel .desc-container .description {
+          min-width: 100%;
+          text-align: center; }
+          .destination .destination-info .container .destination-info__brief .desc-carousel .desc-container .description h1 {
+            font-size: 80px; }
+          .destination .destination-info .container .destination-info__brief .desc-carousel .desc-container .description .brief__description {
+            font-size: 16px; }
+          .destination .destination-info .container .destination-info__brief .desc-carousel .desc-container .description .brief__travel {
+            justify-content: space-evenly; } }
+@media screen and (max-width: 500px) {
+  .destination {
+    background-image: url("../images/destination/background-destination-mobile.jpg"); }
+    .destination .destination-info .container {
+      padding: 0 24px 58px; }
+      .destination .destination-info .container .destination-info__image {
+        padding-top: 37px;
+        row-gap: 32px; }
+        .destination .destination-info .container .destination-info__image h3 {
+          font-size: 16px;
+          align-self: center;
+          letter-spacing: 2.7px; }
+        .destination .destination-info .container .destination-info__image .carousel {
+          width: 170px;
+          height: 170px; }
+      .destination .destination-info .container .destination-info__brief {
+        width: 327px;
+        row-gap: 20px; }
+        .destination .destination-info .container .destination-info__brief ul li {
+          font-size: 14px; }
+        .destination .destination-info .container .destination-info__brief .desc-carousel .desc-container .description h1 {
+          font-size: 56px; }
+        .destination .destination-info .container .destination-info__brief .desc-carousel .desc-container .description .brief__description {
+          font-size: 15px;
+          line-height: 25px;
+          margin-bottom: 32px; }
+        .destination .destination-info .container .destination-info__brief .desc-carousel .desc-container .description .brief__travel {
+          flex-direction: column;
+          row-gap: 32px; }
+          .destination .destination-info .container .destination-info__brief .desc-carousel .desc-container .description .brief__travel .travel__distance {
+            margin-right: 0; } }
 .crew {
   position: relative;
   min-height: 100vh;
@@ -302,90 +489,190 @@ a {
   background-size: cover;
   overflow: hidden; }
   .crew .crew-info .container {
-    column-gap: 20px; }
-    .crew .crew-info .container .crew-info__brief {
+    height: 100%;
+    padding-right: 0; }
+    .crew .crew-info .container .info {
       display: flex;
       flex-direction: column;
-      row-gap: 157px;
-      align-self: flex-start; }
-      .crew .crew-info .container .crew-info__brief h3 {
+      width: 100%; }
+      .crew .crew-info .container .info h3 {
         font-family: "Barlow Condensed", sans-serif;
         color: #fff;
         text-transform: uppercase;
         font-weight: 400;
         font-size: 28px;
         letter-spacing: 4.725px;
-        position: relative; }
-        .crew .crew-info .container .crew-info__brief h3 span {
+        position: relative;
+        padding-top: 78px;
+        margin-bottom: 48px; }
+        .crew .crew-info .container .info h3 span {
           opacity: 0.25;
           font-weight: 700;
           margin-right: 24px; }
-      .crew .crew-info .container .crew-info__brief .desc-carousel {
+      .crew .crew-info .container .info .info-desc {
         display: flex;
-        flex-direction: column;
-        max-width: 615px;
-        overflow: hidden; }
-        .crew .crew-info .container .crew-info__brief .desc-carousel .desc-container {
+        column-gap: 20px; }
+        .crew .crew-info .container .info .info-desc .crew-info__brief {
           display: flex;
-          transform: translateX(0);
-          transition: all 0.3s ease-in-out; }
-          .crew .crew-info .container .crew-info__brief .desc-carousel .desc-container .description {
-            min-width: 100%;
-            margin-bottom: 120px; }
-            .crew .crew-info .container .crew-info__brief .desc-carousel .desc-container .description h2 {
-              font-family: "Bellefair", serif;
-              font-size: 32px;
-              color: #fff;
-              opacity: 0.5;
-              text-transform: uppercase;
-              font-weight: 400;
-              line-height: 37px;
-              margin-bottom: 15px; }
-            .crew .crew-info .container .crew-info__brief .desc-carousel .desc-container .description h1 {
-              font-family: "Bellefair", serif;
-              font-size: 56px;
-              color: #fff;
-              font-weight: 400;
-              text-transform: uppercase;
-              line-height: 64px;
-              margin-bottom: 27px; }
-            .crew .crew-info .container .crew-info__brief .desc-carousel .desc-container .description p {
-              font-size: 18px;
-              color: #d0d6f9;
-              font-family: "Barlow", sans-serif;
-              font-weight: 400;
-              max-width: 444px;
-              line-height: 32px; }
-        .crew .crew-info .container .crew-info__brief .desc-carousel ul {
+          flex-direction: column;
+          row-gap: 157px;
+          justify-content: flex-end;
+          padding-top: 100px; }
+          .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel {
+            display: flex;
+            flex-direction: column;
+            max-width: 615px;
+            overflow: hidden;
+            row-gap: 120px;
+            padding-bottom: 94px; }
+            .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container {
+              display: flex;
+              transform: translateX(0);
+              transition: all 0.3s ease-in-out; }
+              .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description {
+                min-width: 100%; }
+                .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description h2 {
+                  font-family: "Bellefair", serif;
+                  font-size: 32px;
+                  color: #fff;
+                  opacity: 0.5;
+                  text-transform: uppercase;
+                  font-weight: 400;
+                  line-height: 37px;
+                  margin-bottom: 15px; }
+                .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description h1 {
+                  font-family: "Bellefair", serif;
+                  font-size: 56px;
+                  color: #fff;
+                  font-weight: 400;
+                  text-transform: uppercase;
+                  line-height: 64px;
+                  margin-bottom: 27px; }
+                .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description p {
+                  font-size: 18px;
+                  color: #d0d6f9;
+                  font-family: "Barlow", sans-serif;
+                  font-weight: 400;
+                  max-width: 444px;
+                  line-height: 32px; }
+            .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul {
+              display: flex;
+              position: relative; }
+              .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul li {
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: #fff;
+                opacity: 0.17;
+                margin-right: 24px;
+                cursor: pointer;
+                transition: opacity 0.3s ease-in-out; }
+                .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul li:last-of-type {
+                  margin-right: 0; }
+                .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul li.active, .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul li:hover.active {
+                  opacity: 1; }
+                .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul li:hover {
+                  opacity: 1; }
+        .crew .crew-info .container .info .info-desc .crew-info__image {
+          position: relative;
+          width: 500px;
           display: flex;
-          margin-top: -34px;
-          position: relative; }
-          .crew .crew-info .container .crew-info__brief .desc-carousel ul li {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: #fff;
-            opacity: 0.17;
-            margin-right: 24px;
-            cursor: pointer;
-            transition: opacity 0.3s ease-in-out; }
-            .crew .crew-info .container .crew-info__brief .desc-carousel ul li:last-of-type {
-              margin-right: 0; }
-            .crew .crew-info .container .crew-info__brief .desc-carousel ul li.active, .crew .crew-info .container .crew-info__brief .desc-carousel ul li:hover.active {
-              opacity: 1; }
-            .crew .crew-info .container .crew-info__brief .desc-carousel ul li:hover {
-              opacity: 1; }
-    .crew .crew-info .container .crew-info__image {
-      background-image: url("../images/crew/image-douglas-hurley.webp");
-      background-position: center center;
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 100%;
-      padding-bottom: 52%;
-      transition: background-image 0.3s ease-in-out; }
-      .crew .crew-info .container .crew-info__image .image {
-        display: none; }
+          justify-content: center;
+          align-items: center; }
+          .crew .crew-info .container .info .info-desc .crew-info__image .image {
+            width: 34vw;
+            height: 100%;
+            object-fit: fill;
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out; }
+            .crew .crew-info .container .info .info-desc .crew-info__image .image.active {
+              opacity: 1;
+              visibility: visible; }
 
+@media screen and (max-width: 1200px) {
+  .crew .crew-info .container {
+    padding: 0 0 0 55px; } }
+@media screen and (max-width: 1024px) {
+  .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel {
+    max-width: 500px; }
+    .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description h1 {
+      font-size: 40px; } }
+@media screen and (max-width: 768px) {
+  .crew {
+    background-image: url("../images/crew/background-crew-tablet.jpg"); }
+    .crew .crew-info .container {
+      padding: 0 38.5px; }
+      .crew .crew-info .container .info h3 {
+        font-size: 20px;
+        letter-spacing: 3.38px; }
+      .crew .crew-info .container .info .info-desc {
+        flex-direction: column; }
+        .crew .crew-info .container .info .info-desc .crew-info__brief {
+          padding-top: 60px; }
+          .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel {
+            align-self: center;
+            text-align: center;
+            max-width: 520px;
+            row-gap: 40px;
+            padding-bottom: 40px; }
+            .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description h2 {
+              font-size: 24px; }
+            .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description p {
+              max-width: 458px;
+              margin: auto;
+              font-size: 16px;
+              line-height: 28px; }
+            .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul {
+              justify-content: center; }
+              .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul li {
+                width: 10px;
+                height: 10px; }
+        .crew .crew-info .container .info .info-desc .crew-info__image {
+          height: 532px;
+          width: 100%; }
+          .crew .crew-info .container .info .info-desc .crew-info__image .image {
+            width: 53vw; } }
+@media screen and (max-width: 500px) {
+  .crew {
+    background-image: url("../images/crew/background-crew-mobile.jpg"); }
+    .crew .crew-info .container {
+      padding: 0 24px; }
+      .crew .crew-info .container .info h3 {
+        font-size: 16px;
+        letter-spacing: 2.7px;
+        padding-top: 34px;
+        align-self: center;
+        margin-bottom: 32px; }
+      .crew .crew-info .container .info .info-desc {
+        padding-top: 32px; }
+        .crew .crew-info .container .info .info-desc .crew-info__brief {
+          order: 2; }
+          .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container {
+            order: 2; }
+            .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description h2 {
+              font-size: 16px;
+              margin-bottom: 8px;
+              line-height: 18.34px; }
+            .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description h1 {
+              font-size: 24px;
+              margin-bottom: 16px;
+              line-height: 27.5px; }
+            .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel .desc-container .description p {
+              max-width: 327px;
+              font-size: 15px;
+              line-height: 25px; }
+          .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul {
+            column-gap: 16px; }
+            .crew .crew-info .container .info .info-desc .crew-info__brief .desc-carousel ul li {
+              margin-right: 0; }
+        .crew .crew-info .container .info .info-desc .crew-info__image {
+          width: 100%;
+          height: 223px;
+          border-bottom: 1px solid #383b4b; }
+          .crew .crew-info .container .info .info-desc .crew-info__image .image {
+            object-fit: contain; } }
 .technology {
   position: relative;
   min-height: 100vh;
@@ -395,101 +682,207 @@ a {
   background-size: cover;
   overflow: hidden; }
   .technology .technology-info .container {
-    padding-right: 0;
+    padding-right: 24px;
     justify-content: space-between; }
-    .technology .technology-info .container .technology-info__brief h3 {
-      font-family: "Barlow Condensed", sans-serif;
-      color: #fff;
-      text-transform: uppercase;
-      font-weight: 400;
-      font-size: 28px;
-      letter-spacing: 4.725px;
-      margin-bottom: 137px; }
-      .technology .technology-info .container .technology-info__brief h3 span {
-        opacity: 0.25;
-        font-weight: 700;
-        margin-right: 24px; }
-    .technology .technology-info .container .technology-info__brief .brief__desc {
+    .technology .technology-info .container .info {
       display: flex;
-      margin-bottom: 213px; }
-      .technology .technology-info .container .technology-info__brief .brief__desc ul {
-        display: flex;
-        flex-direction: column;
-        margin-right: 80px; }
-        .technology .technology-info .container .technology-info__brief .brief__desc ul li {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          color: #fff;
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          font-family: "Bellefair", serif;
-          font-size: 32px;
-          font-weight: 400;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 32px;
-          cursor: pointer;
-          transition: all 0.3s ease-in-out; }
-          .technology .technology-info .container .technology-info__brief .brief__desc ul li:last-of-type {
-            margin-bottom: 0; }
-          .technology .technology-info .container .technology-info__brief .brief__desc ul li.active, .technology .technology-info .container .technology-info__brief .brief__desc ul li:hover.active {
-            color: #0b0d17;
-            background-color: #fff; }
-          .technology .technology-info .container .technology-info__brief .brief__desc ul li:hover {
-            color: #0b0d17;
-            background-color: #fff; }
-      .technology .technology-info .container .technology-info__brief .brief__desc .desc__item {
-        max-width: 470px;
-        max-height: 305px;
-        overflow: hidden; }
-        .technology .technology-info .container .technology-info__brief .brief__desc .desc__item h5 {
-          color: #d0d6f9;
-          font-size: 16px;
-          letter-spacing: 2.7px;
-          font-family: "Barlow Condensed", sans-serif;
-          font-weight: 400;
-          margin-bottom: 11px;
-          text-transform: uppercase; }
-        .technology .technology-info .container .technology-info__brief .brief__desc .desc__item .carousel {
-          width: 100%;
-          height: 100%;
-          overflow: hidden; }
-          .technology .technology-info .container .technology-info__brief .brief__desc .desc__item .carousel .item-container {
-            height: 100%;
-            transform: translateY(0px);
-            transition: all 0.3s ease-in-out; }
-            .technology .technology-info .container .technology-info__brief .brief__desc .desc__item .carousel .item-container .item {
-              height: 100%; }
-              .technology .technology-info .container .technology-info__brief .brief__desc .desc__item .carousel .item-container .item h1 {
-                color: #fff;
-                font-family: "Bellefair", serif;
-                font-size: 56px;
-                font-weight: 400;
-                margin-bottom: 16px;
-                text-transform: uppercase; }
-              .technology .technology-info .container .technology-info__brief .brief__desc .desc__item .carousel .item-container .item p {
-                max-width: 444px;
-                color: #d0d6f9;
-                font-family: "Barlow", sans-serif;
-                font-size: 18px;
-                line-height: 32px;
-                font-weight: 400; }
-    .technology .technology-info .container .technology-info__image {
-      max-width: 515px;
-      overflow: hidden; }
-      .technology .technology-info .container .technology-info__image .image-carousel {
+      flex-direction: column;
+      width: 100%; }
+      .technology .technology-info .container .info h3 {
+        font-family: "Barlow Condensed", sans-serif;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 28px;
+        letter-spacing: 4.725px;
+        padding-top: 78px;
         width: 100%;
-        max-height: 527px;
-        overflow: hidden; }
-        .technology .technology-info .container .technology-info__image .image-carousel .image-container {
+        justify-self: flex-start;
+        margin-bottom: 26px; }
+        .technology .technology-info .container .info h3 span {
+          opacity: 0.25;
+          font-weight: 700;
+          margin-right: 24px; }
+      .technology .technology-info .container .info .info__desc {
+        width: 100%;
+        display: flex; }
+        .technology .technology-info .container .info .info__desc .technology-info__brief {
+          padding-top: 137px;
           width: 100%;
-          max-height: 527px;
-          transform: translateY(0);
-          transition: all 0.3s ease-in-out; }
-          .technology .technology-info .container .technology-info__image .image-carousel .image-container img {
+          display: flex;
+          justify-content: space-between; }
+          .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc {
+            display: flex;
+            margin-bottom: 213px; }
+            .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul {
+              display: flex;
+              flex-direction: column;
+              margin-right: 80px; }
+              .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul li {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                color: #fff;
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                font-family: "Bellefair", serif;
+                font-size: 32px;
+                font-weight: 400;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 32px;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out; }
+                .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul li:last-of-type {
+                  margin-bottom: 0; }
+                .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul li.active, .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul li:hover.active {
+                  color: #0b0d17;
+                  background-color: #fff; }
+                .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul li:hover {
+                  color: #0b0d17;
+                  background-color: #fff; }
+            .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item {
+              max-width: 470px;
+              max-height: 305px;
+              overflow: hidden; }
+              .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item h5 {
+                color: #d0d6f9;
+                font-size: 16px;
+                letter-spacing: 2.7px;
+                font-family: "Barlow Condensed", sans-serif;
+                font-weight: 400;
+                margin-bottom: 11px;
+                text-transform: uppercase; }
+              .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel {
+                width: 100%;
+                height: 100%;
+                overflow: hidden; }
+                .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container {
+                  height: 100%;
+                  transform: translateY(0px);
+                  transition: all 0.3s ease-in-out; }
+                  .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item {
+                    height: 100%; }
+                    .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item h1 {
+                      color: #fff;
+                      font-family: "Bellefair", serif;
+                      font-size: 56px;
+                      font-weight: 400;
+                      margin-bottom: 16px;
+                      text-transform: uppercase; }
+                    .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item p {
+                      max-width: 444px;
+                      color: #d0d6f9;
+                      font-family: "Barlow", sans-serif;
+                      font-size: 18px;
+                      line-height: 32px;
+                      font-weight: 400; }
+      .technology .technology-info .container .info .technology-info__image {
+        min-width: 515px;
+        height: 527px;
+        background-image: url("../images/technology/image-launch-vehicle-portrait.jpg");
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: background-image 0.3s ease-in-out; }
+        .technology .technology-info .container .info .technology-info__image img {
+          display: none; }
+
+@media screen and (max-width: 1366px) {
+  .technology .technology-info .container {
+    padding-left: 55px; } }
+@media screen and (max-width: 1200px) {
+  .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul {
+    margin-right: 30px; } }
+@media screen and (max-width: 1024px) {
+  .technology .technology-info .container {
+    padding-right: 0; }
+    .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item h1 {
+      font-size: 48px; }
+    .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item p {
+      font-size: 16px; }
+    .technology .technology-info .container .info .technology-info__image {
+      min-width: 400px;
+      align-self: center; } }
+@media screen and (max-width: 768px) {
+  .technology {
+    background-image: url("../images/technology/background-technology-tablet.jpg"); }
+    .technology .technology-info .container {
+      padding: 0 0;
+      flex-direction: column; }
+      .technology .technology-info .container .info {
+        width: 100%; }
+        .technology .technology-info .container .info h3 {
+          font-size: 20px;
+          letter-spacing: 3.375px;
+          padding-top: 78px;
+          margin-left: 38.5px;
+          margin-bottom: 60px; }
+        .technology .technology-info .container .info .info__desc {
+          flex-direction: column; }
+          .technology .technology-info .container .info .info__desc .technology-info__brief {
+            order: 2;
+            padding-top: 56px; }
+            .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc {
+              flex-direction: column;
+              align-items: center;
+              width: 100%;
+              margin-bottom: 97px; }
+              .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul {
+                flex-direction: row;
+                column-gap: 16px;
+                margin-right: 0;
+                margin-bottom: 44px; }
+                .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul li {
+                  width: 60px;
+                  height: 60px;
+                  font-size: 24px; }
+              .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item {
+                text-align: center;
+                max-height: 237px; }
+                .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item h5 {
+                  font-size: 16px; }
+                .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item h1 {
+                  font-size: 40px; }
+                .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item p {
+                  max-width: 458px;
+                  line-height: 28px; }
+          .technology .technology-info .container .info .info__desc .technology-info__image {
             width: 100%;
-            height: 100%;
-            object-fit: contain; }
+            height: 310px;
+            background-image: url("../images/technology/image-launch-vehicle-landscape.jpg");
+            background-size: cover; } }
+@media screen and (max-width: 500px) {
+  .technology {
+    background-image: url("../images/technology/background-technology-mobile.jpg"); }
+    .technology .technology-info .container .info h3 {
+      padding-top: 34px;
+      text-align: center;
+      margin-left: 0;
+      font-size: 16px;
+      letter-spacing: 2.7px;
+      margin-bottom: 32px; }
+    .technology .technology-info .container .info .info__desc .technology-info__brief {
+      padding-top: 34px; }
+      .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc {
+        margin-bottom: 81px; }
+        .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul {
+          margin-bottom: 26px; }
+          .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc ul li {
+            width: 40px;
+            height: 40px;
+            font-size: 16px; }
+        .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item {
+          max-height: 220px; }
+          .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item h5 {
+            font-size: 14px; }
+          .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item h1 {
+            font-size: 24px; }
+          .technology .technology-info .container .info .info__desc .technology-info__brief .brief__desc .desc__item .carousel .item-container .item p {
+            max-width: 327px;
+            line-height: 25px;
+            font-size: 15px; }
+    .technology .technology-info .container .info .info__desc .technology-info__image {
+      height: 170px; } }
 
 /*# sourceMappingURL=styles.css.map */

@@ -13,8 +13,6 @@
     margin-bottom: 131px;
 
     .container {
-      column-gap: 386px;
-
       .home-section__info {
         width: 450px;
         height: 382px;
@@ -50,6 +48,8 @@
 
       .home-section__explore {
         align-self: flex-end;
+        display: flex;
+        justify-content: center;
         a {
           font-family: "Bellefair", serif;
           font-size: 32px;
@@ -106,6 +106,73 @@
           100% {
             outline: 88px solid rgb(0, 0, 0);
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .home {
+    .home-section {
+      .container {
+        padding-right: 45px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    background-image: url("../images/home/background-home-tablet.jpg");
+    .home-section {
+      margin-top: 202px;
+      .container {
+        padding-right: 165px;
+        flex-direction: column;
+        row-gap: 156px;
+        .home-section__info {
+          text-align: center;
+        }
+
+        .home-section__explore {
+          align-self: center;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .home {
+    background-image: url("../images/home/background-home-mobile.jpg");
+    .home-section {
+      margin-top: 112px;
+      .container {
+        padding: 0 24px;
+        flex-direction: column;
+        row-gap: 156px;
+        .home-section__info {
+          text-align: center;
+          max-width: 327px;
+          max-height: 276px;
+          h2 {
+            font-size: 16px;
+          }
+
+          h1 {
+            font-size: 80px;
+            line-height: 100px;
+            margin-bottom: 16px;
+          }
+
+          p {
+            font-size: 15px;
+          }
+        }
+
+        .home-section__explore {
+          align-self: center;
         }
       }
     }

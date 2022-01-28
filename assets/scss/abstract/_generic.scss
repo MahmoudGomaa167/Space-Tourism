@@ -8,6 +8,7 @@
 
 body {
   font-family: "Barlow", sans-serif;
+  position: relative;
 }
 
 ul {
@@ -23,9 +24,8 @@ a {
 .container {
   width: 100%;
   padding: 0 165px;
-  margin-top: 212px;
   display: flex;
   align-items: center;
-  column-gap: 150px;
+  justify-content: space-between;
   position: relative;
 }
